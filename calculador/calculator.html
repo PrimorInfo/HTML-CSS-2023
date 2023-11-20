@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora simples </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .bg {
+            background-image: linear-gradient(25deg, black, rgb(22, 22, 143));
+            height: 100vh;
+            color: white;
+            text-align: center;
+            font-family: arial;
+            font-weight: bold;
+            font-size: 2em;
+            padding-top: 40px;
+        }
+        .calc {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.8);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            border-radius: 15px;
+        }
+        .calc > h2 {
+            font-family: arial;
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+        .btn {
+            height: 50px;
+            width: 50px;
+            font-family: arial;
+            font-size: 25px;
+            background-color: rgb(31, 31, 31);
+            color: white;
+            border: none;
+            margin: 3px;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: black;
+        }
+        #result {
+            background-color: white;
+            height: 40px;
+            width: 207px;
+            color: black;
+            text-align: right;
+            margin: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg">Neo Devart
+        <div class="calc">
+            <h2>Calculadora</h2>
+            <p id="result"></p>
+            <table>
+                <tr>
+                    <td><button class="btn" onclick="cls()">C</button></td>
+                    <td><button class="btn" onclick="back()">Del</button></td>
+                    <td><button class="btn" onclick="insert('/')">/</button></td>
+                    <td><button class="btn" onclick="insert('*')">X</button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn" onclick="insert('7')">7</button></td>
+                    <td><button class="btn" onclick="insert('8')">8</button></td>
+                    <td><button class="btn" onclick="insert('9')">9</button></td>
+                    <td><button class="btn" onclick="insert('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn" onclick="insert('4')">4</button></td>
+                    <td><button class="btn" onclick="insert('5')">5</button></td>
+                    <td><button class="btn" onclick="insert('6')">6</button></td>
+                    <td><button class="btn" onclick="insert('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn" onclick="insert('1')">1</button></td>
+                    <td><button class="btn" onclick="insert('2')">2</button></td>
+                    <td><button class="btn" onclick="insert('3')">3</button></td>
+                    <td rowspan="2"><button class="btn" style="height: 106px;" onclick="calcular()">=</button></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button class="btn" style="width: 106px;" onclick="insert('0')">0</button></td>
+                    <td><button class="btn" onclick="insert('.')">.</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        function insert(num) {
+            var number = document.getElementById('result').innerHTML;
+            document.getElementById('result').innerHTML
+            = number + num;
+        }
+        function cls() {
+            document.getElementById('result').innerHTML = '';
+        }
+        function back(){
+            var resultado = document.getElementById('result').innerHTML;
+            document.getElementById('result').innerHTML = resultado.substring(0, resultado.length -1);
+        }
+        function calcular() {
+            var resultado = document.getElementById('result').innerHTML;
+            if(resultado){
+                document.getElementById('result').innerHTML = eval(resultado);
+            }else {
+                document.getElementById('result').innerHTML = '?';
+            }
+        }
+    </script>
+</body>
+</html>
